@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="bootstrap.min.css" />
+    <!--1.5.8-->
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="ctrl.js"></script>
+</head>
+
+<body data-ng-app="jpApp" data-ng-controller="jpCtrl">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <textarea rows="8" cols="150" data-ng-model="inputJson" data-ng-change="updateOutput()"></textarea>
+      </div>
+    </div>
+    <div class="row" data-ng-hide="isValidInput()">
+      Invalid Json!
+    </div>
+    <div class="row" data-ng-show="isValidInput()">
+      <div class="col-lg-12">
+        <pre>{{outputFormattedJson}}</pre>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
