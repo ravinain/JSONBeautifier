@@ -8,7 +8,7 @@
       try {
           var o = JSON.parse($scope.inputJson);
           getFormattedJson(o, 2);
-          if (o && typeof o === "object") {
+          if (o && typeof o === 'object') {
               return true;
           }
       } catch (e) {}
@@ -17,8 +17,8 @@
 
     $scope.updateOutput = function(){
       if($scope.isValidInput()) {
-        $scope.outputFormattedJson = "{\n"+getFormattedJson(JSON.parse($scope.inputJson), 3, "")+"}";
-        console.log($scope.outputFormattedJson);
+        var parsedInput = JSON.parse($scope.inputJson);
+        $scope.outputFormattedJson = getToken(parsedInput, true)+getFormattedJson(parsedInput, 3, '')+getToken(parsedInput, false);
       }
     };
 
@@ -26,30 +26,36 @@
       var keys = Object.keys(jsonObject);
       for(var index = 0; index < keys.length; index++) {
         var key = keys[index];
-        formattedStr += getSpaces(numberOfSpaces)+ key + " : ";
-        if(jsonObject[key] instanceof Array) {
-          formattedStr += " [\n";
+        formattedStr += getSpaces(numberOfSpaces)+ key + ' : ';
+        if(jsonObject[key] instanceof Array || jsonObject[key] instanceof Object) {
+          formattedStr += getToken(jsonObject[key], true);
           formattedStr = getFormattedJson(jsonObject[key], numberOfSpaces + 3, formattedStr);
-          formattedStr += getSpaces(numberOfSpaces) + "] \n"
-        } else if(jsonObject[key] instanceof Object) {
-          formattedStr += " {\n";
-          formattedStr = getFormattedJson(jsonObject[key], numberOfSpaces + 3, formattedStr);
-          formattedStr += getSpaces(numberOfSpaces) + "} \n"
+          formattedStr += getSpaces(numberOfSpaces) + getToken(jsonObject[key], false);
         } else {
-          formattedStr += jsonObject[key] + "\n";
+          formattedStr += jsonObject[key] + '\n';
         }
       }
       return formattedStr;
     };
     
     var getSpaces = function(numberOfSpaces) {
-      var spaces = "";
+      var spaces = '';
       for(var counter = 0; counter < numberOfSpaces; counter++) {
-        spaces += " ";
+        spaces += ' ';
       }
       return spaces;
     };
-
+      
+    var getToken = function(obj, openFlag) {
+      if(obj instanceof Array) {
+          return openFlag?'[\n':']\n';
+      }
+        return openFlag?'{\n':'}\n';
+    };
+      
+    $scope.isEmptyInput = function(){
+        return $scope.inputJson === undefined || $scope.inputJson === '';
+    }
   }]);
   
 })();

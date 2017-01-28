@@ -11,20 +11,21 @@
 
 <body data-ng-app="jpApp" data-ng-controller="jpCtrl">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <textarea rows="8" cols="150" data-ng-model="inputJson" data-ng-change="updateOutput()"></textarea>
-      </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Input JSON</div>
+        <div class="panel-body">
+            <textarea rows="8" cols="150" data-ng-model="inputJson" data-ng-change="updateOutput()"></textarea>
+        </div>
     </div>
-    <div class="row" data-ng-hide="isValidInput()">
+    <div class="row alert alert-danger" data-ng-hide="isValidInput() || isEmptyInput()">
       Invalid Json!
     </div>
-    <div class="row" data-ng-show="isValidInput()">
-      <div class="col-lg-12">
-        <pre>{{outputFormattedJson}}</pre>
-      </div>
+    <div class="panel panel-default" data-ng-show="isValidInput()">
+        <div class="panel-heading">Formatted JSON</div>
+        <div class="panel-body">
+            <pre>{{outputFormattedJson}}</pre>
+        </div>
     </div>
   </div>
 </body>
-
 </html>
