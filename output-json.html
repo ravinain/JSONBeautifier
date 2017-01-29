@@ -1,0 +1,15 @@
+<ul>
+    <li data-ng-repeat="(key, value) in formattedJson">
+        <span class="glyphicon show-hide" data-ng-class="{'glyphicon-minus':showChildren, 'glyphicon-plus':!showChildren}" data-ng-click="showChildren = !showChildren"></span>
+        <label class="key">{{key}}</label>:
+        <label class="value" data-ng-if="!isArrayType(value) && !isObjectType(value)">{{value}}</label>
+        <label class="value" data-ng-if="isArrayType(value)">[</label>
+        <label class="value" data-ng-if="isObjectType(value)">{</label>
+        
+        <div data-ng-show="showChildren" data-ng-if="isArrayType(value) || isObjectType(value)">
+            <output-json formatted-json="value"></output-json>
+            <label class="value" data-ng-if="isArrayType(value)">]</label>
+            <label class="value" data-ng-if="isObjectType(value)">}</label>
+        </div>
+    </li>
+</ul>

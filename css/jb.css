@@ -1,0 +1,23 @@
+.output ul {
+    list-style-type: none;
+}
+
+.output label {
+    font-weight: normal;
+}
+
+label.key {
+    
+}
+
+lable.value {
+    
+}
+
+.show-hide {
+    cursor: pointer;
+    background-color: #045658;
+    padding-left: 3px;
+    padding-right: 2px;
+    color: #ffffff;
+}
