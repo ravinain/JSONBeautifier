@@ -7,7 +7,6 @@
             },
             templateUrl: 'output-json.html',
             link: function(scope){
-                console.log('Inside directives: ', scope.formattedJson);
                 scope.showChildren = true;
                 scope.isArrayType = function(obj) {
                     return obj instanceof Array;
