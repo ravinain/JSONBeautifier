@@ -7,7 +7,7 @@
         <label class="value" data-ng-if="isObjectType(value)">{</label>
         
         <div data-ng-show="showChildren" data-ng-if="isArrayType(value) || isObjectType(value)">
-            <output-json formatted-json="value"></output-json>
+            <output-block formatted-json="value"></output-block>
             <label class="value" data-ng-if="isArrayType(value)">]</label>
             <label class="value" data-ng-if="isObjectType(value)">}</label>
         </div>
