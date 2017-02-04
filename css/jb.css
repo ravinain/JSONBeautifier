@@ -1,3 +1,6 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
 .output ul {
     list-style-type: none;
 }
@@ -7,11 +10,15 @@
 }
 
 label.key {
+    color: rgb(9, 102, 123);
+}
+
+label.value {
     
 }
 
-lable.value {
-    
+li.show-hide {
+    margin-top: 0px;
 }
 
 .show-hide {
@@ -20,4 +27,16 @@ lable.value {
     padding-left: 3px;
     padding-right: 2px;
     color: #ffffff;
+}
+
+.block-highlight {
+    border-left: 1px dotted black;
+}
+
+.root-node {
+    color: #383131;
+}
+
+label.node {
+    padding-left: 5px;
 }

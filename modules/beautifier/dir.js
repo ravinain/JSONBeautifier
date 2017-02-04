@@ -8,6 +8,7 @@
             templateUrl: '/modules/beautifier/output-json.html',
             link: function(scope){
                 scope.showChildren = true;
+                scope.blockHighlightFlag = false;
                 scope.isArrayType = function(obj){
                     return beautifierService.isArrayType(obj);
                 };
