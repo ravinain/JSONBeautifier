@@ -1,15 +1,20 @@
 <ul>
-    <li data-ng-repeat="(key, value) in formattedJson">
-        <span class="glyphicon show-hide" data-ng-class="{'glyphicon-minus':showChildren, 'glyphicon-plus':!showChildren}" data-ng-click="showChildren = !showChildren"></span>
-        <label class="key">{{key}}</label>:
-        <label class="value" data-ng-if="!isArrayType(value) && !isObjectType(value)">{{value}}</label>
-        <label class="value" data-ng-if="isArrayType(value)">[</label>
-        <label class="value" data-ng-if="isObjectType(value)">{</label>
+    <li data-ng-repeat="(key, value) in formattedJson" 
+        data-ng-class="[{'block-highlight':blockHighlightFlag}]"
+        data-ng-mouseover="blockHighlightFlag = true"
+        data-ng-mouseout="blockHighlightFlag = false">
+        <span class="glyphicon show-hide" 
+              data-ng-class="{'glyphicon-minus':showChildren, 'glyphicon-plus':!showChildren}" 
+              data-ng-click="showChildren = !showChildren"
+              data-ng-mouseover="blockHighlightFlag = true"
+              data-ng-mouseout="blockHighlightFlag = false"></span>
+        <label class="key">{{key}}</label>
+        <label class="value" data-ng-if="!isArrayType(value) && !isObjectType(value)">: {{value}}</label>
+        <label class="value node" data-ng-if="isArrayType(value)">[{{value.length}}]</label>
+        <label class="value node" data-ng-if="isObjectType(value)">{ {{value|numKeys}} }</label>
         
         <div data-ng-show="showChildren" data-ng-if="isArrayType(value) || isObjectType(value)">
             <output-block formatted-json="value"></output-block>
-            <label class="value" data-ng-if="isArrayType(value)">]</label>
-            <label class="value" data-ng-if="isObjectType(value)">}</label>
         </div>
     </li>
 </ul>

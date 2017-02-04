@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/jb.css" />
         <!--1.5.8-->
@@ -9,6 +10,7 @@
         <script src="modules/beautifier/ctrl.js"></script>
         <script src="modules/beautifier/dir.js"></script>
         <script src="modules/beautifier/service.js"></script>
+        <script src="modules/beautifier/filter.js"></script>
     </head>
 
     <body>
@@ -20,11 +22,21 @@
             <div class="panel panel-default" data-ng-if="isValidInput()">
                 <div class="panel-heading">Formatted JSON</div>
                 <div class="panel-body output">
-                    <label class="value" data-ng-if="isArrayType(outputJson)">[</label>
-                    <label class="value" data-ng-if="isObjectType(outputJson)">{</label>
-                    <output-block formatted-json="outputJson"></output-block>
-                    <label class="value" data-ng-if="isArrayType(outputJson)">]</label>
-                    <label class="value" data-ng-if="isObjectType(outputJson)">}</label>
+                    <ul>
+                        <li data-ng-class="[{'block-highlight':blockHighlightFlag}]"
+                        data-ng-mouseover="blockHighlightFlag = true"
+                        data-ng-mouseout="blockHighlightFlag = false">
+                            <span class="glyphicon show-hide" 
+                              data-ng-class="{'glyphicon-minus':showChildren, 'glyphicon-plus':!showChildren}" 
+                              data-ng-click="showChildren = !showChildren"
+                              data-ng-mouseover="blockHighlightFlag = true"
+                              data-ng-mouseout="blockHighlightFlag = false"></span>
+                            <label class="root-node">root</label>
+                            <label class="value node" data-ng-if="isArrayType(outputJson)">[{{outputJson.length}}]</label>
+                            <label class="value node" data-ng-if="isObjectType(outputJson)">{ {{outputJson|numKeys}} }</label>
+                            <output-block formatted-json="outputJson" data-ng-show="showChildren"></output-block>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
