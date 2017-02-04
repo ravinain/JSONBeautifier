@@ -4,27 +4,27 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/jb.css" />
         <!--1.5.8-->
-        <script src="js/angular.min.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/ctrl.js"></script>
-        <script src="js/dir.js"></script>
+        <script src="ext_lib/angular.min.js"></script>
+        <script src="modules/beautifier/app.js"></script>
+        <script src="modules/beautifier/ctrl.js"></script>
+        <script src="modules/beautifier/dir.js"></script>
+        <script src="modules/beautifier/service.js"></script>
     </head>
 
-    <body data-ng-app="jpApp" data-ng-controller="jpCtrl">
-        <div class="container-fluid">
-            <div class="panel panel-default">
-                <div class="panel-heading">Input JSON</div>
-                <div class="panel-body">
-                    <textarea rows="8" cols="150" data-ng-model="inputJson" data-ng-change="updateOutput()"></textarea>
-                </div>
-            </div>
+    <body>
+        <div class="container-fluid" data-ng-app="beautifierApp" data-ng-controller="beautifierCtrl">
+            <input-block input-json="inputJson" output-json="outputJson"></input-block>
             <div class="row alert alert-danger" data-ng-hide="isValidInput() || isEmptyInput()">
                 Invalid Json!
             </div>
             <div class="panel panel-default" data-ng-if="isValidInput()">
                 <div class="panel-heading">Formatted JSON</div>
                 <div class="panel-body output">
-                    <output-json formatted-json="outputJson"></output-json>
+                    <label class="value" data-ng-if="isArrayType(outputJson)">[</label>
+                    <label class="value" data-ng-if="isObjectType(outputJson)">{</label>
+                    <output-block formatted-json="outputJson"></output-block>
+                    <label class="value" data-ng-if="isArrayType(outputJson)">]</label>
+                    <label class="value" data-ng-if="isObjectType(outputJson)">}</label>
                 </div>
             </div>
         </div>
