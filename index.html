@@ -15,7 +15,14 @@
 
     <body>
         <div class="container-fluid" data-ng-app="beautifierApp" data-ng-controller="beautifierCtrl">
-            <input-block input-json="inputJson" output-json="outputJson"></input-block>
+            <ul class="nav nav-tabs jb-tabs">
+              <li data-ng-repeat="tab in tabs" role="presentation" 
+                  data-ng-class="{'active':tab.active}" data-ng-click="toggleTab($index)">
+                  <a href="#">{{tab.tabName}}</a>
+                </li>
+                <li role="presentation" class="add-tab" data-ng-click="addTab()"><span class="glyphicon glyphicon-plus"></span></li>
+            </ul>
+            <input-block input-json="inputJson[activeTab]" output-json="outputJson"></input-block>
             <div class="row alert alert-danger" data-ng-hide="isValidInput() || isEmptyInput()">
                 Invalid Json!
             </div>

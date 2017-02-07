@@ -40,3 +40,23 @@ li.show-hide {
 label.node {
     padding-left: 5px;
 }
+
+.jb-tabs {
+    margin-bottom: 10px;
+}
+
+.jb-tabs li.active a{
+    background-color: #f5f5f5;
+}
+
+.jb-tabs li a{
+    color: #000000;
+}
+
+li.add-tab span {
+    font-size: 26px;
+    font-weight: bolder;
+    padding-top: 6px;
+    cursor: pointer;
+    padding-left: 5px;
+}
