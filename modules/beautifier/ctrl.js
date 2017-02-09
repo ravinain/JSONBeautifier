@@ -1,18 +1,19 @@
 (function(){
   var myApp = angular.module('beautifierApp');
   
-  myApp.controller('beautifierCtrl', ['$scope', 'beautifierService', function($scope, beautifierService){
-    $scope.inputJson = [''];
+  myApp.controller('beautifierCtrl', ['$scope', 'beautifierService', '$localStorage', function($scope, beautifierService, $localStorage){
+    $scope.inputJson = $localStorage.inputJson || [''];
     $scope.outputJson = {};
     $scope.showChildren = true;
-    $scope.tabs = [{tabName:'Tab 1', active: true}];
-    $scope.activeTab = 0;
+    $scope.tabs = $localStorage.tabs || [{tabName:'Tab 1', active: true}];
+    $scope.activeTab = $localStorage.activeTab || 0;
 
     $scope.isValidInput = function(){
         return beautifierService.isValidInput($scope.inputJson[$scope.activeTab]);
     };
 
     $scope.updateOutput = function(){
+        $localStorage.inputJson = $scope.inputJson;
         $scope.outputJson = beautifierService.getParsedOutput($scope.inputJson[$scope.activeTab]);
     };
 
@@ -35,6 +36,7 @@
           if(activeIndex == c) {
               $scope.tabs[c].active = true;
               $scope.activeTab = activeIndex;
+              $localStorage.activeTab = $scope.activeTab;
               $scope.updateOutput();
           } else {
               $scope.tabs[c].active = false;
@@ -46,6 +48,7 @@
       $scope.tabs.push({tabName: 'Tab '+($scope.tabs.length+1), active:false});
       $scope.inputJson.push('');
       $scope.toggleTab($scope.tabs.length-1);
+      $localStorage.tabs = $scope.tabs;
     };
   }]);
   
