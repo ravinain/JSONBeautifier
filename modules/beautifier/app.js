@@ -1,4 +1,4 @@
 // Code goes here
 (function() {
-    angular.module('beautifierApp', []);
+    angular.module('beautifierApp', ['ngStorage']);
 })();
