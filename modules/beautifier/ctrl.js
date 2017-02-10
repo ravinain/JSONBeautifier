@@ -13,6 +13,7 @@
     };
 
     $scope.updateOutput = function(){
+        $scope.inputJson = beautifierService.replaceNewLine($scope.inputJson, ' ');
         $localStorage.inputJson = $scope.inputJson;
         $scope.outputJson = beautifierService.getParsedOutput($scope.inputJson[$scope.activeTab]);
     };
