@@ -22,11 +22,13 @@
     };
       
     $scope.isArrayType = function(obj){
-        return beautifierService.isArrayType(obj);
+        return obj !== null && beautifierService.isArrayType(obj);
     };
 
     $scope.isObjectType = function(obj){
-        return beautifierService.isObjectType(obj);
+        console.log('Object ', obj);
+        console.log('Equas null ', obj !== null);
+        return obj !== null && beautifierService.isObjectType(obj);
     };
       
     $scope.toggleTab = function(activeIndex) {
@@ -50,6 +52,17 @@
       $scope.toggleTab($scope.tabs.length-1);
       $localStorage.tabs = $scope.tabs;
     };
+      
+    $scope.deleteTab = function(index){
+    
+      $scope.tabs.splice(index, 1);
+      $scope.inputJson.splice(index, 1);
+        
+      $localStorage.tabs = $scope.tabs;
+      $localStorage.inputJson = $scope.inputJson;
+    };
+     
+    $scope.updateOutput();
   }]);
   
 })();

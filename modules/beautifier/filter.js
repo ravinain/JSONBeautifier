@@ -5,7 +5,7 @@
     app.filter('numKeys', function() {
         return function(json) {
             var keys = Object.keys(json)
-            return keys.length;
+            return json.$$hashKey ? keys.length-1 : keys.length;
         }
     });
 })();
