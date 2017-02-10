@@ -20,6 +20,7 @@
               <li data-ng-repeat="tab in tabs" role="presentation" 
                   data-ng-class="{'active':tab.active}" data-ng-click="toggleTab($index)">
                   <a href="#">{{tab.tabName}}</a>
+                    <span class="glyphicon glyphicon-remove close" data-ng-click="deleteTab($index)"></span>
                 </li>
                 <li role="presentation" class="add-tab" data-ng-click="addTab()"><span class="glyphicon glyphicon-plus"></span></li>
             </ul>

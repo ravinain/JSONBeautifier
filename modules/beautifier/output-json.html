@@ -1,5 +1,5 @@
 <ul>
-    <li data-ng-repeat="(key, value) in formattedJson" 
+    <li data-ng-repeat="(key, value) in formattedJson track by $index" 
         data-ng-class="[{'block-highlight':blockHighlightFlag}]"
         data-ng-mouseover="blockHighlightFlag = true"
         data-ng-mouseout="blockHighlightFlag = false">

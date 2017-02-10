@@ -27,6 +27,7 @@ li.show-hide {
     padding-left: 3px;
     padding-right: 2px;
     color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .block-highlight {
@@ -51,12 +52,20 @@ label.node {
 
 .jb-tabs li a{
     color: #000000;
+    float: left;
 }
 
 li.add-tab span {
-    font-size: 26px;
-    font-weight: bolder;
-    padding-top: 6px;
+    font-size: 19px;
+    padding-top: 9px;
     cursor: pointer;
     padding-left: 5px;
+}
+
+.jb-tabs li span.close {
+    color: #f90000;
+    cursor: pointer;
+    left: -18px;
+    font-size: 0.8em;
+    font-weight: 200;
 }
