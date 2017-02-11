@@ -1,7 +1,6 @@
-(function(){
-  var myApp = angular.module('beautifierApp');
-  
-  myApp.controller('beautifierCtrl', ['$scope', 'beautifierService', '$localStorage', function($scope, beautifierService, $localStorage){
+'use strict';
+
+module.exports = function($scope, beautifierService, $localStorage){
     $scope.inputJson = $localStorage.inputJson || [''];
     $scope.outputJson = {};
     $scope.showChildren = true;
@@ -64,6 +63,4 @@
     };
      
     $scope.updateOutput();
-  }]);
-  
-})();
+  };

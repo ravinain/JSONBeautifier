@@ -1,0 +1,31 @@
+{
+  "name": "json-beautifier",
+  "version": "1.0.0",
+  "description": "1. Install NodeJS, see https://nodejs.org/en/\r 2. Execute setup.bat to install http-server. Skip this step, if node_modules/.bin/http-server exists\r 3. Execute start-server.bat to start server\r 4. Open http://localhost:8080/ . If this does not work check the port number, it should match with the port number showing in start-server.bat command window.",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-css": "3.0.0",
+    "bootstrap": "3.3.7",
+    "google-font-import": "0.1.2",
+    "http-server": "^0.9.0"
+  },
+  "devDependencies": {
+    "angular": "1.6.2",
+    "browserify": "^14.0.0",
+    "gulp": "^3.9.1",
+    "ngstorage": "^0.3.11"
+  },
+  "scripts": {
+    "build": "browserify app/modules/app.js -o app/modules/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravinain/JSONBeautifier.git"
+  },
+  "author": "Ravi Nain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ravinain/JSONBeautifier/issues"
+  },
+  "homepage": "https://github.com/ravinain/JSONBeautifier#readme"
+}

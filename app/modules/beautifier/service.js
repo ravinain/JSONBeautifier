@@ -1,9 +1,3 @@
-/**
- *
- */
-(function() {
-    var app = angular.module('beautifierApp');
-    
     var beautifierService = function() {
       
         var isValidInput = function(input) {
@@ -54,5 +48,4 @@
         };
     };
     
-    app.factory('beautifierService', beautifierService);
-})();
+module.exports = beautifierService;
