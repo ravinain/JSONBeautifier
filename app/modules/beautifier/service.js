@@ -30,9 +30,12 @@
         };
                 
         var replaceNewLine = function(inputArray, token) {
+            if(!inputArray || inputArray === null) return inputArray;
             var length = inputArray.length;
             for(var index = 0; index < length; index++) {
-                inputArray[index] = inputArray[index].replace(/(?:\r\n|\r|\n)/g, token);    
+                if(inputArray[index] && inputArray[index] !== null) {
+                    inputArray[index] = inputArray[index].replace(/(?:\r\n|\r|\n)/g, token);    
+                }
             }
             
             return inputArray;
