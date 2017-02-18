@@ -11,9 +11,18 @@
   },
   "devDependencies": {
     "angular": "1.6.2",
+    "angular-mocks": "1.6.2",
     "browserify": "^14.0.0",
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
-    "ngstorage": "^0.3.11"
+    "karma": "^1.4.1",
+    "karma-browserify": "^5.1.1",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "~1.2.0",
+    "karma-sinon": "^1.0.5",
+    "mocha": "^3.2.0",
+    "ngstorage": "^0.3.11",
+    "watchify": "^3.9.0"
   },
   "scripts": {
     "build": "browserify app/modules/app.js -o app/modules/bundle.js"
